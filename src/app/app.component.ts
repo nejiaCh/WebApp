@@ -23,17 +23,5 @@ interviewDate : String;
     private my_service: AppService, private http: Http) {
 }
 
-  updateDate(form: NgForm) {
-    this.my_service.updateDate(form)
-           .subscribe(
-               data => {
-                   alert("update successful")
-                   //this.router.navigate(['/nextUrl']);
-               },
-               error => {
-                 
-                   alert("errorrrr update")
-                   console.log("update error" + error)
-               });
-   }
+
 }
