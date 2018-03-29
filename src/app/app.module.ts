@@ -44,8 +44,9 @@ const routes: Routes = [
     HttpModule,
     CalendarModule,
     BrowserAnimationsModule,
-    AccordionModule
-    
+    AccordionModule,
+    RouterModule.forRoot(routes, {enableTracing: true})
+
                      //    RouterModule.forRoot(routes, {enableTracing: true})
 ],
   providers: [],
