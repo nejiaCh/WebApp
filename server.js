@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 const router = express.Router();
-var pg = require('pg');
+//var pg = require('pg');
 const bodyParser = require('body-parser');
+var path = require("path")
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,11 +31,22 @@ app.use(function (req, res, next) {
     });
     
 const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:root@13.58.160.100:5432/FBMessengerBot';
-const pgclient = new pg.Client(connectionString);
+//const pgclient = new pg.Client(connectionString);
 
+var pg = require('pg')
+
+const config = {
+    host: '13.58.160.100',
+    user: 'postgres',
+    database: 'FBMessengerBot',
+    password: 'root',
+    port: 5432
+};
+// pool takes the object above -config- as parameter
+const pool = new pg.Pool(config);
 
 app.get('/', function (req, res, next) {
-    pg.connect(connectionString,function(err,client,done) {
+    pool.connect(function(err,client,done) {
        if(err){
            console.log("not able to get connection "+ err);
            res.status(400).send(err);
@@ -51,7 +63,7 @@ app.get('/', function (req, res, next) {
 });
 
 app.post('/update', function (req, res) {
-    pg.connect(connectionString,function(err,client,done) {
+    pool.connect(function(err,client,done) {
        if(err){
            console.log("not able to get connection "+ err);
            res.status(400).send(err);
@@ -69,7 +81,7 @@ app.post('/update', function (req, res) {
     });
 });
 
-var port = process.env.PORT || 8000
+var port = process.env.PORT || 3000
 app.listen(port);
 // Run the app by serving the static files in the dist directory
 app.use(express.static(__dirname + '/dist'));
@@ -79,6 +91,4 @@ app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
   });
   
-
-
   console.log(`Server listening on ${port}`);
