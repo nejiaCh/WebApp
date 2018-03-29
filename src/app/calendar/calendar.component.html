@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<link rel="stylesheet" type="text/css" href="/node_modules/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/themes/omega/theme.css" />
+<link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/primeng.min.css" />
+
+<div style="text-align:center">
+
+  <h2>When will you know the result? Please type the date like this</h2>
+  
+  <form name="form" #f="ngForm" >
+
+<div class="ui-g ui-fluid">
+  
+    <div class="ui-g-12 ui-md-4">
+        <h3>Time</h3>
+        <p-calendar [(ngModel)]="interviewDate"  name="interviewDate" [showTime]="true"></p-calendar> 
+    </div>
+</div>
+</form>
+
+</div>

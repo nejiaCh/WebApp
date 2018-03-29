@@ -12,10 +12,25 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';  //api
-import {enableProdMode} from '@angular/core';
+import {Routes, RouterModule}  from '@angular/router';
+import { CalendarComponent } from './calendar/calendar.component';
+
+const routes: Routes = [
+  {
+    path: 'calendar',
+    component: CalendarComponent,
+  },
+  {
+    path: '',
+    redirectTo: '/calendar',
+    pathMatch: 'full'
+ 
+  },
+];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalendarComponent
       ],
   imports: [
     
