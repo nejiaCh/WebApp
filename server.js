@@ -45,23 +45,6 @@ const config = {
 // pool takes the object above -config- as parameter
 const pool = new pg.Pool(config);
 
-app.get('/', function (req, res, next) {
-    pool.connect(function(err,client,done) {
-       if(err){
-           console.log("not able to get connection "+ err);
-           res.status(400).send(err);
-       } 
-       client.query('SELECT * FROM job', function(err,result) {
-           done(); // closing the connection;
-           if(err){
-               console.log("errrrrrrrrrrrrrr11111" + err);
-               res.status(400).send(err);
-           }
-           res.status(200).send(result.rows);
-       });
-    });
-});
-
 app.post('/update', function (req, res) {
     pool.connect(function(err,client,done) {
        if(err){
@@ -86,9 +69,14 @@ app.listen(port);
 // Run the app by serving the static files in the dist directory
 app.use(express.static(__dirname + '/dist'));
 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'),   function(err, res){
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/dist/index.html'));
+    if (err){
+        console.log("nooooooo" + err);
+    }}
+);
+
   });
   
   console.log(`Server listening on ${port}`);
