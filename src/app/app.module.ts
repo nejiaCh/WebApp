@@ -12,12 +12,13 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';  //api
-
+import {enableProdMode} from '@angular/core';
 @NgModule({
   declarations: [
     AppComponent
       ],
   imports: [
+    
     BrowserModule,
     CalendarModule,
     MatDatepickerModule,        // <----- import(must)
@@ -29,6 +30,7 @@ import {MenuItem} from 'primeng/api';  //api
     CalendarModule,
     BrowserAnimationsModule,
     AccordionModule
+    
                      //    RouterModule.forRoot(routes, {enableTracing: true})
 ],
   providers: [],
