@@ -69,6 +69,7 @@ app.post('/update', function (req, res) {
     });
 });
 
-app.listen(3000, function () {
-    console.log('Server is running.. on Port 3000');
+var port = process.env.PORT || 8000
+app.listen(port, function () {
+    console.log('Server is running.. on Port 8000');
 });
