@@ -13,16 +13,14 @@ export class AppService {
 
   }
 
+ // updateDate(form: NgForm){
+  //  let headers = new Headers();
+   // headers.append('Content-Type', 'application/json');
 
+   //var data = JSON.stringify({
+    // interview_date : form.value.interviewDate
+    //});    
+    //return this.http.post("http://localhost:3000/update",data, {headers}).map(response => response.json());
 
-  updateDate(form: NgForm){
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-   var data = JSON.stringify({
-     interview_date : form.value.interviewDate
-    });    
-    return this.http.post("http://localhost:3000/update",data, {headers}).map(response => response.json());
-
-  }
+  //}
 }
